@@ -7,7 +7,7 @@ from alembic import context
 from sqlalchemy import create_engine
 
 from app.pkg.connectors import PostgresSQL
-from app.pkg.models.sqlalchemy_models import Base, Message, Correspondent, Delivery, Recipient, TextTemplate
+from app.pkg.models.sqlalchemy_models import Base, Recipient, Message, EmailCorrespondent, TelegramCorrespondent, Delivery, TextTemplate
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 

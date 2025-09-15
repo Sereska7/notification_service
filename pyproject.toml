@@ -25,6 +25,7 @@ psycopg2-binary = "^2.9.10"
 autoflake = "^2.3.1"
 docformatter = "^1.7.7"
 add-trailing-comma = "^3.2.0"
+passlib = "^1.7.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"

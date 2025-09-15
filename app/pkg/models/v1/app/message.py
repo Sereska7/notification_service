@@ -30,7 +30,5 @@ class MessageStatusEnum(BaseEnum):
 
 
 class ChannelEnum(BaseEnum):
-    EMAIL = "email"
-    SMS = "sms"
-    PUSH = "push"
-    WEB = "web"
+    EMAIL = "EMAIL"
+    TELEGRAM = "TELEGRAM"
