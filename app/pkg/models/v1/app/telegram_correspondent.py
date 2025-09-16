@@ -10,7 +10,10 @@ from app.pkg.models.base.optional_field import create_optional_fields_class
 __all__ = [
     "TelegramCorrespondent",
     "TelegramCorrespondentResponse",
-    "TelegramCorrespondentCreateCommand"
+    "TelegramCorrespondentCreateCommand",
+    "TelegramCorrespondentReadQuery",
+    "TelegramCorrespondentUpdateCommand",
+    "TelegramCorrespondentDeleteCommand"
 ]
 
 
@@ -71,12 +74,37 @@ class TelegramCorrespondentResponse(BaseTelegramCorrespondent):
     telegram_correspondent_id: UUID = TelegramCorrespondentFields.telegram_correspondent_id
     telegram_correspondent_name: str = TelegramCorrespondentFields.telegram_correspondent_name
     telegram_correspondent_is_active: bool = TelegramCorrespondentFields.telegram_correspondent_is_active
+    telegram_bot_token: str = TelegramCorrespondentFields.telegram_bot_token
     telegram_correspondent_create_at: datetime = TelegramCorrespondentFields.telegram_correspondent_create_at
     telegram_correspondent_update_at: datetime | None = OptionalTelegramCorrespondentFields.telegram_correspondent_update_at
 
 
+# Command.
 class TelegramCorrespondentCreateCommand(BaseTelegramCorrespondent):
     """TelegramCorrespondentCreateCommand model."""
 
     telegram_correspondent_name: str = TelegramCorrespondentFields.telegram_correspondent_name
     telegram_bot_token: str = TelegramCorrespondentFields.telegram_bot_token
+
+
+class TelegramCorrespondentUpdateCommand(BaseTelegramCorrespondent):
+    """TelegramCorrespondentUpdateCommand model."""
+
+    telegram_correspondent_id: UUID = TelegramCorrespondentFields.telegram_correspondent_id
+    telegram_correspondent_name: str | None = OptionalTelegramCorrespondentFields.telegram_correspondent_name
+    telegram_bot_token: str | None = OptionalTelegramCorrespondentFields.telegram_bot_token
+
+
+class TelegramCorrespondentDeleteCommand(BaseTelegramCorrespondent):
+    """TelegramCorrespondentDeleteCommand model."""
+
+    telegram_correspondent_id: UUID = TelegramCorrespondentFields.telegram_correspondent_id
+
+
+# Query.
+class TelegramCorrespondentReadQuery(BaseTelegramCorrespondent):
+    """TelegramCorrespondentReadCommand model."""
+
+    telegram_correspondent_id: UUID | None  = OptionalTelegramCorrespondentFields.telegram_correspondent_id
+    telegram_correspondent_name: str | None = OptionalTelegramCorrespondentFields.telegram_correspondent_name
+    telegram_correspondent_is_active: bool | None = OptionalTelegramCorrespondentFields.telegram_correspondent_is_active

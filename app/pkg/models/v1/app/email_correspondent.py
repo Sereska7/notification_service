@@ -10,7 +10,10 @@ from app.pkg.models.base.optional_field import create_optional_fields_class
 __all__ = [
     "EmailCorrespondent",
     "EmailCorrespondentResponse",
-    "EmailCorrespondentCreateCommand"
+    "EmailCorrespondentCreateCommand",
+    "EmailCorrespondentUpdateCommand",
+    "EmailCorrespondentDeleteCommand",
+    "EmailCorrespondentReadQuery",
 ]
 
 
@@ -103,3 +106,29 @@ class EmailCorrespondentCreateCommand(BaseEmailCorrespondent):
     email_port: int = EmailCorrespondentFields.email_port
     email_username: str = EmailCorrespondentFields.email_username
     email_password: str = EmailCorrespondentFields.email_password
+
+
+class EmailCorrespondentUpdateCommand(BaseEmailCorrespondent):
+    """EmailCorrespondent update command."""
+
+    email_correspondent_id: UUID = EmailCorrespondentFields.email_correspondent_id
+    email_correspondent_name: str | None = OptionalEmailCorrespondentFields.email_correspondent_name
+    email_host: str | None = OptionalEmailCorrespondentFields.email_host
+    email_port: int | None = OptionalEmailCorrespondentFields.email_port
+    email_username: str | None = OptionalEmailCorrespondentFields.email_username
+    email_password: str | None = OptionalEmailCorrespondentFields.email_password
+
+
+class EmailCorrespondentDeleteCommand(BaseEmailCorrespondent):
+    """EmailCorrespondent delete command."""
+
+    email_correspondent_id: UUID = EmailCorrespondentFields.email_correspondent_id
+
+
+# Query.
+class EmailCorrespondentReadQuery(BaseEmailCorrespondent):
+    """EmailCorrespondent read query model."""
+
+    email_correspondent_id: UUID | None = OptionalEmailCorrespondentFields.email_correspondent_id
+    email_correspondent_name: str | None = OptionalEmailCorrespondentFields.email_correspondent_name
+    email_correspondent_is_active: bool | None = OptionalEmailCorrespondentFields.email_correspondent_is_active

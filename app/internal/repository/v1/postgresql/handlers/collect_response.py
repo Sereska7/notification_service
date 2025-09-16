@@ -34,10 +34,7 @@ def collect_response(fn) -> Callable:
     return inner
 
 
-async def process_response(
-    fn: Callable,
-    response: Any,
-) -> Union[List[Type[Model]], Type[Model], None]:
+async def process_response(fn: Callable, response: Any):
     return_annotation = get_type_hints(fn).get("return")
     if return_annotation is None or return_annotation is type(None):
         return None
@@ -47,22 +44,15 @@ async def process_response(
 
     if is_optional and not response:
         return None
-
     if origin is list and not response:
         return []
-
     if not response:
         raise EmptyResult
 
-    base_type = None
-    if is_optional:
-        base_type = [t for t in get_args(return_annotation) if t is not type(None)][0]
-    else:
-        base_type = return_annotation
-
+    base_type = get_args(return_annotation)[0] if is_optional else return_annotation
     adapter = TypeAdapter(base_type)
 
-    if origin is list:
-        return [adapter.validate_python(obj) for obj in response]
+    if (origin is list) or (is_optional and get_origin(base_type) is list):
+        return adapter.validate_python(response)  # <- здесь не итерируем
 
     return adapter.validate_python(response)

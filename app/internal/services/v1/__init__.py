@@ -31,7 +31,7 @@ class Services(containers.DeclarativeContainer):
 
     email_correspondent_service = providers.Factory(EmailCorrespondentService)
     email_correspondent_service.add_attributes(
-        correspondent_repository=postgres_repositories.email_correspondent_repository,
+        email_correspondent_repository=postgres_repositories.email_correspondent_repository,
     )
 
     telegram_correspondent_service = providers.Factory(TelegramCorrespondentService)
