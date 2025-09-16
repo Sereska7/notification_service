@@ -13,7 +13,7 @@ __all__ = ["TelegramCorrespondentService"]
 
 
 class TelegramCorrespondentService:
-    """Auth service class."""
+    """Telegram correspondent service class."""
 
     telegram_correspondent_repository: TelegramCorrespondentRepository
     __logger: Logger = get_logger(__name__)

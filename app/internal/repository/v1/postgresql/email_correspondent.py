@@ -18,8 +18,8 @@ class EmailCorrespondentRepository(Repository):
 
     @collect_response
     async def create(
-            self,
-            cmd: models.EmailCorrespondentCreateCommand
+        self,
+        cmd: models.EmailCorrespondentCreateCommand
     ) -> models.EmailCorrespondentResponse:
         """Creates a new email correspondent in the database.
 
@@ -40,8 +40,8 @@ class EmailCorrespondentRepository(Repository):
 
     @collect_response
     async def read(
-            self,
-            query: models.EmailCorrespondentReadQuery
+        self,
+        query: models.EmailCorrespondentReadQuery
     ) -> list[models.EmailCorrespondentResponse]:
         """Retrieves email correspondents matching the given filters.
 
@@ -77,8 +77,8 @@ class EmailCorrespondentRepository(Repository):
 
     @collect_response
     async def update(
-            self,
-            cmd: models.EmailCorrespondentUpdateCommand,
+        self,
+        cmd: models.EmailCorrespondentUpdateCommand,
     ) -> models.EmailCorrespondentResponse:
         """Updates an existing email correspondent in the database.
 
@@ -107,8 +107,8 @@ class EmailCorrespondentRepository(Repository):
 
     @collect_response
     async def delete(
-            self,
-            cmd: models.EmailCorrespondentDeleteCommand
+        self,
+        cmd: models.EmailCorrespondentDeleteCommand
     ) -> models.EmailCorrespondentResponse:
         """Performs a soft delete of an email correspondent by setting it inactive.
 

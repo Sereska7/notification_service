@@ -6,6 +6,7 @@ from app.internal.repository import Repositories
 from app.internal.repository.v1 import postgresql, rabbitmq, redis
 from app.internal.services.v1.telegram_correspondent_service import TelegramCorrespondentService
 from app.internal.services.v1.email_correspondent import EmailCorrespondentService
+from app.internal.services.v1.text_template import TextTemplateService
 from app.pkg.clients import Clients
 from app.pkg.settings import settings
 
@@ -37,4 +38,8 @@ class Services(containers.DeclarativeContainer):
     telegram_correspondent_service = providers.Factory(TelegramCorrespondentService)
     telegram_correspondent_service.add_attributes(
         telegram_correspondent_repository=postgres_repositories.telegram_correspondent_repository,
+    )
+    text_template_service = providers.Factory(TextTemplateService)
+    text_template_service.add_attributes(
+        text_template_repository=postgres_repositories.text_template_repository,
     )

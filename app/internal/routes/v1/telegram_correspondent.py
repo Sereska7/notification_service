@@ -13,7 +13,7 @@ from app.pkg.models.base.request_id_route import RequestIDRoute
 
 router = APIRouter(
     prefix="/telegram_correspondent",
-    tags=["TelegramCorrespondent"],
+    tags=["Telegram Correspondent"],
     route_class=RequestIDRoute
 )
 

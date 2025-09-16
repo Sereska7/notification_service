@@ -53,6 +53,6 @@ async def process_response(fn: Callable, response: Any):
     adapter = TypeAdapter(base_type)
 
     if (origin is list) or (is_optional and get_origin(base_type) is list):
-        return adapter.validate_python(response)  # <- здесь не итерируем
+        return adapter.validate_python(response)
 
     return adapter.validate_python(response)

@@ -14,7 +14,7 @@ __all__ = ["EmailCorrespondentService"]
 
 
 class EmailCorrespondentService:
-    """Auth service class."""
+    """Email correspondent service class."""
 
     email_correspondent_repository: EmailCorrespondentRepository
     __logger: Logger = get_logger(__name__)

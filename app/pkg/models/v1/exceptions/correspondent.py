@@ -1,4 +1,4 @@
-"""Module with telegram correspondent exceptions for the application."""
+"""Module with correspondent exceptions for the application."""
 
 from starlette import status
 
@@ -16,7 +16,7 @@ __all__ = [
 
 class CorrespondentNotFound(BaseAPIException):
     message = "Correspondent not found."
-    status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    status_code = status.HTTP_404_NOT_FOUND
 
 
 class CorrespondentCreateError(BaseAPIException):

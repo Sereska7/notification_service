@@ -13,7 +13,7 @@ from app.pkg.models.base.request_id_route import RequestIDRoute
 
 router = APIRouter(
     prefix="/email_correspondent",
-    tags=["EmailCorrespondent"],
+    tags=["Email Correspondent"],
     route_class=RequestIDRoute
 )
 
