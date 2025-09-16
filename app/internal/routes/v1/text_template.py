@@ -34,7 +34,7 @@ async def create_text_template(
 ) -> models.TextTemplate:
     return await text_template_service.create_text_template(cmd)
 
-@router.post(
+@router.get(
     "/",
     status_code=status.HTTP_201_CREATED,
     response_model=list[models.TextTemplate],

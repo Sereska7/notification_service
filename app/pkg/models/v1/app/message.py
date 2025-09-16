@@ -30,5 +30,5 @@ class MessageStatusEnum(BaseEnum):
 
 
 class ChannelEnum(BaseEnum):
-    EMAIL = "email"
-    TELEGRAM = "telegram"
+    EMAIL = "EMAIL"
+    TELEGRAM = "TELEGRAM"

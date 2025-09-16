@@ -65,7 +65,7 @@ class TextTemplateFields:
 
     text_template_channel: ChannelEnum = Field(
         description="Канал, для которого предназначен шаблон.",
-        examples=["email", "telegram", "sms"],
+        examples=["EMAIL", "TELEGRAM"],
     )
 
     text_template_create_at: datetime = Field(
