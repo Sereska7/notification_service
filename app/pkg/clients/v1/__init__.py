@@ -2,6 +2,7 @@
 
 from dependency_injector import containers, providers
 
+from app.pkg.clients.v1.email import EmailClient
 from app.pkg.settings import settings
 
 __all__ = [
@@ -14,3 +15,7 @@ class Clients(containers.DeclarativeContainer):
 
     configuration = providers.Configuration(name="settings")
     configuration.from_dict(settings.model_dump())
+
+    email_client = providers.Factory(
+        EmailClient
+    )

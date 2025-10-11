@@ -33,8 +33,6 @@ class EmailCorrespondentService:
         """
 
         try:
-            hashed_password = bcrypt.hash(cmd.email_password)
-            cmd.email_password = hashed_password
             return await self.email_correspondent_repository.create(cmd)
         except UniqueViolation as exc:
             self.__logger.exception("Failed to create email correspondent")

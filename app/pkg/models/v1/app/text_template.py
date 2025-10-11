@@ -14,7 +14,8 @@ __all__ = [
     "TextTemplateCreateCommand",
     "TextTemplateUpdateCommand",
     "TextTemplateDeleteCommand",
-    "TextTemplateReadQuery"
+    "TextTemplateReadQuery",
+    "TextTemplateReadByCodeQuery"
 ]
 
 from app.pkg.models.v1 import ChannelEnum
@@ -36,7 +37,7 @@ class TextTemplateFields:
         description="Код (уникальный ключ) шаблона для поиска и идентификации.",
         min_length=1,
         max_length=200,
-        examples=["welcome_email", "reset_password_sms"],
+        examples=["user.verification.requested"],
     )
 
     text_template_is_active: bool = Field(
@@ -133,3 +134,10 @@ class TextTemplateReadQuery(BaseTextTemplate):
     text_template_code: str | None = OptionalTextTemplateFields.text_template_code
     text_template_subject: str | None = OptionalTextTemplateFields.text_template_subject
     text_template_channel: ChannelEnum | None = OptionalTextTemplateFields.text_template_channel
+
+
+class TextTemplateReadByCodeQuery(BaseTextTemplate):
+    """Text template read by code query."""
+
+    text_template_code: str = TextTemplateFields.text_template_code
+    text_template_channel: ChannelEnum = TextTemplateFields.text_template_channel

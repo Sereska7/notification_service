@@ -76,6 +76,26 @@ class EmailCorrespondentRepository(Repository):
             return rows
 
     @collect_response
+    async def read_by_name(
+        self,
+        query: models.EmailCorrespondentReadByNameQuery
+    ) -> models.EmailCorrespondentResponse:
+        """"""
+
+        async with get_connection() as session:
+            stmt = (
+                select(EmailCorrespondent)
+                .where(
+                    EmailCorrespondent.email_correspondent_name == query.email_correspondent_name
+                )
+            )
+            res = await session.execute(stmt)
+            row = res.scalar_one()
+            return row
+
+
+
+    @collect_response
     async def update(
         self,
         cmd: models.EmailCorrespondentUpdateCommand,

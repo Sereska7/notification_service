@@ -27,7 +27,7 @@ def upgrade() -> None:
     sa.Column('email_correspondent_is_active', sa.Boolean(), nullable=False),
     sa.Column('email_host', sa.String(), nullable=False),
     sa.Column('email_port', sa.Integer(), nullable=False),
-    sa.Column('email_username', sa.String(), nullable=False),
+    sa.Column('email_sender', sa.String(), nullable=False),
     sa.Column('email_password', sa.String(), nullable=False),
     sa.Column('email_correspondent_create_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.Column('email_correspondent_update_at', sa.DateTime(), nullable=True),

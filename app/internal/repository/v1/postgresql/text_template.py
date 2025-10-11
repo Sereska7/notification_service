@@ -83,6 +83,22 @@ class TextTemplateRepository(Repository):
             return rows
 
     @collect_response
+    async def read_by_code(
+        self,
+        query: models.TextTemplateReadByCodeQuery
+    ) -> models.TextTemplate:
+        """"""
+
+        async with get_connection() as session:
+            stmt = (
+                select(TextTemplate)
+                .where(TextTemplate.text_template_code == query.text_template_code)
+            )
+            res = await session.execute(stmt)
+            row = res.scalar_one()
+            return row
+
+    @collect_response
     async def update(
         self,
         cmd: models.TextTemplateUpdateCommand,

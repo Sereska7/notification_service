@@ -20,6 +20,7 @@ Examples:
 """
 
 from app.internal.services import Services
+from app.internal.workers import Workers
 from app.pkg.clients import Clients
 from app.pkg.connectors import (
     Connectors,
@@ -37,6 +38,7 @@ __containers__ = Containers(
     containers=[
         Container(container=Services),
         Container(container=Clients),
+        Container(container=Workers),
         Resource(
             container=Connectors,
             depends_on=[

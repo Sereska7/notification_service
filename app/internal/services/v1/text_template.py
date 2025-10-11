@@ -1,16 +1,16 @@
 """Models for Text template object."""
 
 from logging import Logger
+from typing import Any
 
 from app.internal.repository.v1.postgresql.text_template import TextTemplateRepository
 from app.pkg.logger import get_logger
 from app.pkg.models import v1 as models
 from app.pkg.models.v1.exceptions.repository import DriverError, EmptyResult
-
-__all__ = ["TextTemplateService"]
-
 from app.pkg.models.v1.exceptions.text_template import TextTemplateCreateError, TextTemplateReadError, \
     TextTemplateUpdateError, TextTemplateNotFound, TextTemplateDeleteError
+
+__all__ = ["TextTemplateService"]
 
 
 class TextTemplateService:
@@ -100,3 +100,13 @@ class TextTemplateService:
         except DriverError as exc:
             self.__logger.exception("Failed to delete text template.")
             raise TextTemplateDeleteError from exc
+
+    @staticmethod
+    async def render_template_content(
+        template: models.TextTemplate,
+        context: dict[str, Any]
+    ) -> str:
+        try:
+            return template.text_template_content.format(**context)
+        except KeyError as e:
+            raise ValueError(f"Missing variable in context: {e}")

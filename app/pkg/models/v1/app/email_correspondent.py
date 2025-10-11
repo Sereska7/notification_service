@@ -14,6 +14,7 @@ __all__ = [
     "EmailCorrespondentUpdateCommand",
     "EmailCorrespondentDeleteCommand",
     "EmailCorrespondentReadQuery",
+    "EmailCorrespondentReadByNameQuery"
 ]
 
 
@@ -29,10 +30,10 @@ class EmailCorrespondentFields:
         examples=["123e4567-e89b-12d3-a456-426614174000"],
     )
     email_correspondent_name: str = Field(
-        description="Отображаемое имя отправителя.",
+        description="Уникальный код/идентификатор корреспондента.",
         min_length=1,
         max_length=200,
-        examples=["Support Team"],
+        examples=["user.verification.requested"],
     )
     email_correspondent_is_active: bool = Field(
         default=True,
@@ -91,6 +92,7 @@ class EmailCorrespondentResponse(BaseEmailCorrespondent):
     email_correspondent_name: str = EmailCorrespondentFields.email_correspondent_name
     email_host: str = EmailCorrespondentFields.email_host
     email_port: int = EmailCorrespondentFields.email_port
+    email_password: str = EmailCorrespondentFields.email_password
     email_username: str = EmailCorrespondentFields.email_username
     email_correspondent_is_active: bool = EmailCorrespondentFields.email_correspondent_is_active
     email_correspondent_create_at: datetime = EmailCorrespondentFields.email_correspondent_create_at
@@ -132,3 +134,9 @@ class EmailCorrespondentReadQuery(BaseEmailCorrespondent):
     email_correspondent_id: UUID | None = OptionalEmailCorrespondentFields.email_correspondent_id
     email_correspondent_name: str | None = OptionalEmailCorrespondentFields.email_correspondent_name
     email_correspondent_is_active: bool | None = OptionalEmailCorrespondentFields.email_correspondent_is_active
+
+
+class EmailCorrespondentReadByNameQuery(BaseEmailCorrespondent):
+    """EmailCorrespondent read by name query model."""
+
+    email_correspondent_name: str | None = OptionalEmailCorrespondentFields.email_correspondent_name
